@@ -21,3 +21,7 @@
 git clone git@github.com:ViewWay/nvim.git ~/.config/nvim
 nvim   # 首次启动自动安装插件;LSP/格式化/调试器由 Mason 自动补齐
 ```
+
+## 使用指引
+
+完整键位与工作流见 [USAGE.md](USAGE.md)。
