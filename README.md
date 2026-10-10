@@ -4,7 +4,7 @@
 
 ## 已启用
 
-- **语言**:C/C++、Rust、Java、Kotlin、Python、JS/TS、Vue、HTML/CSS、JSON/YAML/TOML、Lua、仓颉(本地 SDK `~/cangjie` + [cangjie-nvim](https://gitcode.com/ystyle/cangjie-nvim))
+- **语言**:C/C++、Rust、Java、Kotlin、Python、JS/TS、Vue、HTML/CSS、JSON/YAML/TOML、Lua、仓颉、Swift、Objective-C、Go、SQL、Docker(本地 SDK `~/cangjie` + [cangjie-nvim](https://gitcode.com/ystyle/cangjie-nvim))
 - **调试**:`dap.core`(F5 启动、`<leader>db` 断点、`<leader>du` DAP UI);C/C++/Rust 用 codelldb,Python 用 debugpy,Java 用 java-debug-adapter
 - **AI**:[codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim)
   - `<leader>aa` 聊天、`<leader>ae` 行内提示、`<leader>ac` 动作面板

@@ -131,3 +131,69 @@ git -C ~/.config/nvim add -A && git commit -m "msg" && git push
 - **pip**:系统 `~/.pip/pip.conf` 的 `prefix=~/lib` 会破坏 Mason 装 pypi 包,本配置已在 nvim 内屏蔽(`PIP_CONFIG_FILE=/dev/null`)。终端手动 `pip install` 若有异常,先看这个文件。
 - **仓颉**:依赖 `~/cangjie` SDK 与已下载的 LSP wrapper,移动 SDK 路径后需同步改 `lua/plugins/cangjie.lua`。
 - **图标乱码/方块**:确认终端使用 0xProto Nerd Font。
+
+## 12. 窗口 / 折叠 / 宏 / quickfix
+
+| 键位 | 功能 |
+|---|---|
+| `<C-w>s` / `<C-w>v` | 水平 / 垂直分屏 |
+| `<C-w>h/j/k/l` 或 `<C-h/j/k/l>` | 窗口间跳转 |
+| `<leader>wm` | 当前窗口最大化/还原(zoom) |
+| `<leader>wd` | 关闭当前窗口 |
+| `zc` `zo` `za` / `zM` `zR` | 折叠/展开/切换 / 全折叠/全展开 |
+| `q{字母}…q` → `@{字母}` | 录制宏 → 回放;`@@` 重复上一次宏 |
+| `]q` `[q` | quickfix 列表上/下一项 |
+| `<leader>xx` | 全部诊断(Trouble) |
+
+补全(blink.cmp):`Ctrl+Space` 呼出,`Tab`/`Shift+Tab` 选择,`Enter` 确认,`Ctrl+e` 取消。
+`<leader>u` 开关组:按 `<leader>u` 等半秒看全部;常用的有 `uC` 换主题、`uG` gitSigns、`un` 通知。
+
+## 13. 测试(neotest)
+
+| 键位 | 功能 |
+|---|---|
+| `<leader>tr` | 运行最近的测试(光标所在用例) |
+| `<leader>tt` | 运行当前测试文件 |
+| `<leader>tT` | 运行全部测试文件 |
+| `<leader>td` | **调试**最近的测试(自动走 DAP) |
+| `<leader>ts` / `<leader>to` / `<leader>tO` | 测试树 / 输出 / 输出面板 |
+| `<leader>tl` / `<leader>tS` / `<leader>tw` | 重跑上次 / 停止 / watch 模式 |
+
+适配器自动生效:Python(pytest/unittest)、Go(go test)、Rust(cargo test)。测试文件内直接 `<leader>tr`。
+
+## 14. Markdown
+
+- 打开 `.md` 后 `:MarkdownPreview` 浏览器实时预览,`:MarkdownPreviewStop` 关闭
+- 保存时自动跑 markdownlint-cli2 检查 + prettierd 格式化;`markdown-toc` 维护目录
+- 表格/列表编辑配合 `<leader>cf` 手动格式化
+
+## 15. Git 冲突 / REST 调试
+
+**合并冲突**(git-conflict,冲突文件内自动高亮三色区块):
+
+| 键位 | 功能 |
+|---|---|
+| `]x` / `[x` | 跳到下/上一个冲突 |
+| `co` / `ct` / `cb` / `c0` | 取我方 / 取对方 / 两者都留 / 删掉该冲突 |
+
+**REST 客户端**(kulala):新建 `api.http` 文件:
+
+```http
+GET https://httpbin.org/get?key=1
+Authorization: Bearer xxx
+```
+
+| 键位 | 功能 |
+|---|---|
+| `<leader>kr` / `<leader>kR` | 发送当前 / 全部请求 |
+| `<leader>kp` / `<leader>kt` | 预览请求 / 切换 headers-body 视图 |
+
+## 16. 语言支持速查(增补)
+
+| 语言 | LSP | 格式化 | 调试 | 备注 |
+|---|---|---|---|---|
+| Swift | sourcekit-lsp(Xcode 自带) | swiftformat(如装) | — | 打开 `.swift` 即用 |
+| Objective-C | clangd | clang-format | codelldb | `.m`/`.mm` 直接支持 |
+| Go | gopls | goimports + gofumpt | **delve**(`<leader>dc`) | 含 gomodifytags/impl/golangci-lint |
+| SQL | sqls | sqlfluff | — | |
+| Dockerfile | dockerls | hadolint 校验 | — | compose 文件同样支持 |
